@@ -25,7 +25,7 @@ namespace StockService.Controllers
         public async Task<IActionResult> UpdateStock(string productId, [FromBody] int quantity)
         {
             var lockKey = $"stock:update:{productId}";
-            var expiry = TimeSpan.FromSeconds(6);
+            var expiry = TimeSpan.FromSeconds(30);
 
             
 
@@ -37,7 +37,7 @@ namespace StockService.Controllers
 
                 try
                 {
-                    await Task.Delay(10000); // Örnek olarak 60 saniye süren bir işlem
+                    await Task.Delay(60000); // Örnek olarak 60 saniye süren bir işlem
                     // Belirtilen productId'ye ait stok güncelleme işlemi burada yapılır
                     return Ok("Stock updated successfully.");
                 }
